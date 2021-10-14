@@ -1,4 +1,4 @@
-package org.example.testingOpportunitiesSpringBoot;
+package org.example.testingOpportunitiesSpringBoot.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
