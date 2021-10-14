@@ -1,11 +1,14 @@
 package org.example.testingOpportunitiesSpringBoot.model;
 
-import io.swagger.annotations.ApiModel;
 import lombok.Data;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
 @Data
-@ApiModel
+@Entity
 public class TestModel {
-    private String id;
+    @Id
+    private Long id;
     private String name;
 }

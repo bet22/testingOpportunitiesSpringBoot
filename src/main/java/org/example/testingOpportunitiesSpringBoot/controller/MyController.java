@@ -1,14 +1,13 @@
 package org.example.testingOpportunitiesSpringBoot.controller;
 
 import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
+import org.example.testingOpportunitiesSpringBoot.model.TestModel;
 import org.example.testingOpportunitiesSpringBoot.service.MyService;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.List;
 
 @Api(tags = "Имя класса")
 @RestController
@@ -20,19 +19,19 @@ public class MyController {
 
     @ApiOperation("Описание метода. По умолчанию имя метода")
     @GetMapping()
-    public Map<String, String> getMain() {
+    public List<TestModel> getMain() {
         return myService.getMap();
     }
 
     @PostMapping()
-    public Map<String,String> add(String key, String value) {
+    public List<TestModel> add(Long key, String value) {
         myService.addValue(key, value);
         return myService.getMap();
     }
 
     @GetMapping("{id}")
-    public String one(@PathVariable String id) {
-        return myService.getMap().get(id) == null ? "not found" : myService.getMap().get(id);
+    public TestModel one(@PathVariable Long id) {
+        return myService.getOne(id);
     }
 
 }

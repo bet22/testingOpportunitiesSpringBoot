@@ -1,0 +1,9 @@
+spring:
+  datasource:
+    password:
+    username:
+    url: jdbc:postgresql://localhost/resttest
+  jpa:
+    hibernate:
+      ddl-auto: create
+    database-platform: org.hibernate.dialect.PostgreSQLDialect

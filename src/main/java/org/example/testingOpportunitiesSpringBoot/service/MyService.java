@@ -1,24 +1,30 @@
 package org.example.testingOpportunitiesSpringBoot.service;
 
+import lombok.RequiredArgsConstructor;
+import org.example.testingOpportunitiesSpringBoot.model.TestModel;
+import org.example.testingOpportunitiesSpringBoot.repository.MyRepo;
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class MyService {
 
-    Map<String, String> map = new HashMap<String, String>() {{
-        put("1", "first");
-        put("2", "second");
-        put("3", "free");
-    }};
+    private final MyRepo repo;
 
-    public void addValue(String key, String value) {
-        map.put(key, value);
+    public void addValue(Long key, String value) {
+        TestModel testModel = new TestModel();
+        testModel.setId(key);
+        testModel.setName(value);
+        repo.save(testModel);
     }
 
-    public Map<String, String> getMap(){
-        return map;
+    public List<TestModel> getMap() {
+        return repo.findAll();
+    }
+
+    public TestModel getOne(Long id) {
+        return repo.findById(id).orElse(null);
     }
 }
